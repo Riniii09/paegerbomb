@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 
 
+
 const PDFPreview = dynamic(() => import("@/components/PDFPreview").then(mod => mod.PDFPreview), { 
   ssr: false,
   loading: () => (
@@ -54,11 +55,14 @@ export default function EditorPage() {
       return;
     }
 
+
     setIsProcessing(true);
     try {
       const result = await applyPageNumbers(pdfState.arrayBuffer, config);
-      const blob = new Blob([result], { type: "application/pdf" });
+      const blob = new Blob([result as BlobPart], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
+
+
       const a = document.createElement("a");
       a.href = url;
       const baseName = pdfState.fileName.replace(/\.pdf$/i, "");
@@ -164,10 +168,11 @@ export default function EditorPage() {
           {/* Preview */}
           <PDFPreview />
         </div>
-        </div>
       </div>
+    </div>
     </>
   );
 }
+
 
 

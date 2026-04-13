@@ -11,6 +11,7 @@ export type Position =
   | "bottom-right";
 
 export interface PageNumberConfig {
+  id?: string;              // Optional ID to track active preset
   // Range
   startPage: number;        // 1-based page where numbering begins (pages before = skipped)
   endPage: number | null;   // null = until last page

@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
+    "@next/swc-win32-x64-msvc": "^16.2.3",
     "@types/pdfjs-dist": "^2.10.377",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.31",
     "lucide-react": "^0.441.0",

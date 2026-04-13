@@ -8,7 +8,7 @@ function resolveFont(
   family: string,
   bold: boolean,
   italic: boolean
-): Promise<ReturnType<typeof pdfDoc.embedFont>> {
+) {
   // pdf-lib only has basic standard fonts; bold/italic combos
   const map: Record<string, StandardFonts> = {
     "Helvetica-normal": StandardFonts.Helvetica,

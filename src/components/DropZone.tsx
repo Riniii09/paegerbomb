@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { useDropzone } from "react-dropzone";
+import { useDropzone, FileRejection } from "react-dropzone";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, FileText, X, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -56,9 +56,9 @@ export function DropZone({ onPdfLoaded, className, compact = false }: DropZonePr
   );
 
   const onDrop = useCallback(
-    (acceptedFiles: File[], rejectedFiles: { errors: { code: string }[] }[]) => {
-      if (rejectedFiles.length > 0) {
-        const code = rejectedFiles[0]?.errors?.[0]?.code;
+    (acceptedFiles: File[], fileRejections: FileRejection[]) => {
+      if (fileRejections.length > 0) {
+        const code = fileRejections[0]?.errors?.[0]?.code;
         if (code === "file-too-large") setError("File too large. Max 100MB.");
         else if (code === "file-invalid-type") setError("Only PDF files are accepted.");
         else setError("Invalid file.");
